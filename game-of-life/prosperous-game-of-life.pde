@@ -1,5 +1,5 @@
 /*
-Prosperous - Game of Life model
+Prosperous Mod - Game of Life model
 
 */
 
@@ -7,7 +7,7 @@ Prosperous - Game of Life model
 
 // Starting cell status
 // Low: Many alive cells  <-->  High: Less alive cells
-int STARTING_STATUS = 20;
+int STARTING_STATUS = 16;
 
 // Area length of this model
 int LENGTH = 200;
@@ -66,15 +66,6 @@ void setup(){
 }
 
 
-// If coordinate point is under 0, it's converted to opposite side
-int convert(int point){
-  if(point < 0){
-    return LENGTH + point;
-  }
-  return point;
-}
-
-
 void draw(){
 
   for(int i = 1; i < HEIGHT-1; i++){
@@ -85,15 +76,15 @@ void draw(){
       // nw: north west, n: north, ne: north east ...
       // If c at the edge, it's converted to opposite side
       
-      int nw = state[convert(i-1)][convert(j-1)];
-      int n  = state[convert(i-1)][j];
-      int ne = state[convert(i-1)][(j+1)%WIDTH];
-      int w  = state[i][convert(j-1)];
+      int nw = state[i-1][j-1];
+      int n  = state[i-1][j];
+      int ne = state[i-1][j+1];
+      int w  = state[i][j-1];
       int c  = state[i][j];
-      int e  = state[i][(j+1)%WIDTH];
-      int sw = state[(i+1)%HEIGHT][convert(j-1)];
-      int s  = state[(i+1)%HEIGHT][j];
-      int se = state[(i+1)%HEIGHT][(j+1)%WIDTH];
+      int e  = state[i][j+1];
+      int sw = state[i+1][j-1];
+      int s  = state[i+1][j];
+      int se = state[i+1][j+1];
       int neighbor_cell_sum = nw + n + ne + w + e + sw + s + se;
       
       // Cell dead or alive
@@ -112,6 +103,7 @@ void draw(){
   
   
   // Update canvas
+  // Here is the Key point to make this model prosperous
   state = next_state;
   
   // Draw each cell
