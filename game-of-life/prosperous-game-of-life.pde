@@ -68,6 +68,7 @@ void setup(){
 
 void draw(){
 
+  // Ignore the edge point
   for(int i = 1; i < HEIGHT-1; i++){
     for(int j = 1; j < WIDTH-1; j++){
     
