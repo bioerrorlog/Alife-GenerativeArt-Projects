@@ -49,9 +49,9 @@ void setup(){
   for(int i = 0; i < HEIGHT; i++){
     for(int j = 0; j < WIDTH; j++){
       if(random(STARTING_STATUS) > 1){
-				state[i][j] = 0;
+		    state[i][j] = 0;
 			}else{
-				state[i][j] = 1;
+		    state[i][j] = 1;
 			}
     }
   }
