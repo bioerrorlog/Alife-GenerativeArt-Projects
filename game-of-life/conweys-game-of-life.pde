@@ -17,7 +17,7 @@ int STARTING_STATUS = 2;
 int LENGTH = 200;
 
 // Frame rate
-int FRAME_RATE = 10;
+int FRAME_RATE = 20;
 
 // ---- Parameters end ----
 
