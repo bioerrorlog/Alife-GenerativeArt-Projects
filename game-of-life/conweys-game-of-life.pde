@@ -1,6 +1,10 @@
 /*
   Conwey's Game of Life model
   
+  
+  License: 
+  MIT License
+  
   References:
   https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life
   https://github.com/alifelab/alife_book_src/blob/master/chap02/game_of_life.py
@@ -14,7 +18,10 @@
 int STARTING_STATUS = 2;
 
 // Area length of this model
-int LENGTH = 200;
+// int LENGTH = 200;
+
+// Cell size
+int CELL_SIZE = 5;
 
 // Frame rate
 int FRAME_RATE = 20;
@@ -22,9 +29,18 @@ int FRAME_RATE = 20;
 // ---- Parameters end ----
 
 
+// Window size
+int WINDOW_WIDTH = $(window).width();
+int WINDOW_HEIGHT = $(window).height();
+
+
 // Define size of this model
-int WIDTH = LENGTH;
-int HEIGHT = LENGTH;
+// int WIDTH = LENGTH;
+// int HEIGHT = LENGTH;
+int WIDTH = floor(WINDOW_WIDTH/CELL_SIZE);
+int HEIGHT = floor(WINDOW_HEIGHT/CELL_SIZE);
+println(WIDTH);
+println(HEIGHT);
 
 // Define model state
 int[][] state = new int[HEIGHT][WIDTH];
@@ -35,12 +51,12 @@ int[][] next_state = new int[HEIGHT][WIDTH];
 void setup(){
 
   // Canvas size
-  size(700,700);
+  size(WINDOW_WIDTH,WINDOW_HEIGHT);
   // Backgroud color
   background(#161616); // Black
   
   // Frame rate
-  frameRate(FRAME_RATE);
+  // frameRate(FRAME_RATE);
   
   // Draws all geometry with smooth anti-aliased edges
   smooth();
@@ -64,16 +80,24 @@ void setup(){
       }else{
         fill(255); // While
       }
-      rect(width/WIDTH*i, height/HEIGHT*j, width/WIDTH, height/HEIGHT); 
+      rect(CELL_SIZE*i, CELL_SIZE*j, CELL_SIZE, CELL_SIZE); 
+			// rect(width/WIDTH*i, height/HEIGHT*j, width/WIDTH, height/HEIGHT);
     }
   }
 }
 
 
 // If coordinate point is under 0, it's converted to opposite side
-int convert(int point){
+int convert_width(int point){
   if(point < 0){
-    return LENGTH + point;
+    return WIDTH + point;
+  }
+  return point;
+}
+
+int convert_height(int point){
+  if(point < 0){
+    return HEIGHT + point;
   }
   return point;
 }
@@ -88,14 +112,15 @@ void draw(){
       // c: center (cell self)
       // nw: north west, n: north, ne: north east ...
       // If c at the edge, it's converted to opposite side
+			
       
-      int nw = state[convert(i-1)][convert(j-1)];
-      int n  = state[convert(i-1)][j];
-      int ne = state[convert(i-1)][(j+1)%WIDTH];
-      int w  = state[i][convert(j-1)];
+      int nw = state[convert_height(i-1)][convert_width(j-1)];
+      int n  = state[convert_height(i-1)][j];
+      int ne = state[convert_height(i-1)][(j+1)%WIDTH];
+      int w  = state[i][convert_width(j-1)];
       int c  = state[i][j];
       int e  = state[i][(j+1)%WIDTH];
-      int sw = state[(i+1)%HEIGHT][convert(j-1)];
+      int sw = state[(i+1)%HEIGHT][convert_width(j-1)];
       int s  = state[(i+1)%HEIGHT][j];
       int se = state[(i+1)%HEIGHT][(j+1)%WIDTH];
       int neighbor_cell_sum = nw + n + ne + w + e + sw + s + se;
@@ -131,7 +156,9 @@ void draw(){
         fill(255); // While
       }
       // Draw rect
-      rect(width/WIDTH*i, height/HEIGHT*j, width/WIDTH, height/HEIGHT); 
+      rect(CELL_SIZE*i, CELL_SIZE*j, CELL_SIZE, CELL_SIZE); 
     }
   }
 }
+
+
