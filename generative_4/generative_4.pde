@@ -15,6 +15,7 @@ void draw(){
   rotateX(frameCount * 0.04);
   rotateY(frameCount * 0.04);
   
+  
   float s = 0;
   float t = 0;
   float lastX = 0;
