@@ -63,7 +63,6 @@ class Circle{
     float xMove, yMove;
     float radius;
     float alpha;
-    float colorNoise;
   
     Circle(){
         x = random(width);
@@ -102,6 +101,7 @@ class Circle{
                     // 円または四角の描画
                     alpha = random(3);
                     stroke(0, alpha);
+                    // stroke(random(255), random(255), random(255), alpha); // 微妙に色をつける
                     noFill();
                     overLap *= -1; // overLapを正の値に
                     rect(midX, midY, overLap, overLap); // 重複分の幅を持った四角を描画
