@@ -1,0 +1,2 @@
+- Making blog: 
+- Output images: https://www.pixiv.net/artworks/78320698
