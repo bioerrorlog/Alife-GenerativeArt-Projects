@@ -2,9 +2,6 @@
   Conwey's Game of Life model
   
   
-  License: 
-  MIT License
-  
   References:
   https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life
   https://github.com/alifelab/alife_book_src/blob/master/chap02/game_of_life.py
