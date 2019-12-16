@@ -70,21 +70,6 @@ void draw() {
 }
 
 
-// void keyPressed(){
-//     /*
-//     ENTERキー押下: 画像を保存する
-//     BACKSPACEキー押下: setup()を呼ぶ
-//     */
-    
-//     if (keyCode == ENTER){
-//         saveFrame("generative_7_####.png");
-//     }
-//     if (keyCode == BACKSPACE){
-//         setup();
-//     }
-// }
-
-
 class Cell {
   float x, y;
   float state;  		
@@ -97,8 +82,7 @@ class Cell {
     y = why * _cellSize;
     
     // Cellの初期状態を定義
-    // 画面の真ん中のCellは255, それ以外は2
-
+    // 確率で50、それ以外0
     if(random(100) < 1){
       nextState = 50; 
     }else{
@@ -115,11 +99,10 @@ class Cell {
   
   void calcNextState() {
     /*
-    1. もし隣接するセルの状態の平均が255であれば状態は0に
-    2. もし隣接するセルの状態の平均が0であるなら状態は255に
-    3. そうでなければ、新しい状態＝現在の状態＋隣接セルの状態の平均ー前の状態の値
-    4. もし新しい状態が255を超えたら255にし、
-    5. もし新しい状態が0以下ならそれを0にする
+    1. もし隣接するセルの状態の平均が0であるなら状態は30に
+    2. そうでなければ、新しい状態＝現在の状態＋隣接セルの状態の平均ー前の状態の値
+    3. もし新しい状態が255を超えたら255にし、
+    4. もし新しい状態が0以下ならそれを0にする
     */
     			
     float total = 0;				
@@ -129,12 +112,12 @@ class Cell {
     float average = int(total/8);
     			
     if (average == 0) {
-      nextState = 30; // 2.
+      nextState = 30; // 1.
     } else {
       nextState = state + average;
-      if (lastState > 0) { nextState -= lastState; } // 3.
-      if (nextState > 255) { nextState = 255; } // 4.
-      else if (nextState < 0) { nextState = 0; } // 5.
+      if (lastState > 0) { nextState -= lastState; } // 2.
+      if (nextState > 255) { nextState = 255; } // 3.
+      else if (nextState < 0) { nextState = 0; } // 4.
     }
  
     lastState = state;	
