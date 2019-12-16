@@ -111,6 +111,13 @@ class Cell {
   }
   
   void calcNextState() {
+    /*
+    1. もし隣接するセルの状態の平均が255であれば状態は0に
+    2. もし隣接するセルの状態の平均が0であるなら状態は255に
+    3. そうでなければ、新しい状態＝現在の状態＋隣接セルの状態の平均ー前の状態の値
+    4. もし新しい状態が255を超えたら255にし、
+    5. もし新しい状態が0以下ならそれを0にする
+    */
     			
     float total = 0;				
     for (int i=0; i < neighbours.length; i++) {	
@@ -118,15 +125,15 @@ class Cell {
     }					
     float average = int(total/8);
     			
-    if (average == 255) {
+    if (average == 255) { // 1.
       nextState = 0;
     } else if (average == 0) {
-      nextState = 255;
+      nextState = 255; // 2.
     } else {
       nextState = state + average;
-      if (lastState > 0) { nextState -= lastState; }	 
-      if (nextState > 255) { nextState = 255; }
-      else if (nextState < 0) { nextState = 0; }
+      if (lastState > 0) { nextState -= lastState; } // 3.
+      if (nextState > 255) { nextState = 255; } // 4.
+      else if (nextState < 0) { nextState = 0; } // 5.
     }
  
     lastState = state;	
