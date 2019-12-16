@@ -1,0 +1,9 @@
+
+連番画像からmp4ムービーを作成：
+ffmpeg -r 20 -i generative_7_%05d.png -vcodec libx264 -pix_fmt yuv420p -r 60 out.mp4
+
+"%05d"は00001.png, 00002.png ...の連番の桁数
+-r が2回書いてあるが、最初の -r オプションで20fpsの連番画像ということを明示、
+それを2回目の -r オプションで60fpsで動画化するように指定
+参考: https://qiita.com/livlea/items/a94df4667c0eb37d859f
+
