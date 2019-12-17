@@ -1,0 +1,2 @@
+- Making blog: https://www.bioerrorlog.work/entry/generative-art-processing-8
+- Output images: https://www.pixiv.net/artworks/78350343
