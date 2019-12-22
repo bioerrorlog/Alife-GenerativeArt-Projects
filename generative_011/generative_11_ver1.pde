@@ -4,6 +4,7 @@ Modified from:
 Daniel Shiffman
 Coding Challenge #24: Perlin Noise Flow  Field
 https://youtu.be/BjoM9oKOAKY
+https://github.com/CodingTrain/website/tree/master/CodingChallenges/CC_024_PerlinNoiseFlowField
 */
 
 
