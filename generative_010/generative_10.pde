@@ -15,11 +15,11 @@ ArrayList<Particle> particles;
 void setup() {
   size(1920, 1080);
   
-  flowfield = new FlowField(10);
+  flowfield = new FlowField(10); // 引数からflowfieldを構成するベクターの数が算出・定義される
   flowfield.update();
 
   particles = new ArrayList<Particle>();
-  for (int i = 0; i < 10000; i++) {
+  for (int i = 0; i < 10000; i++) { // 生成するParticlesの数を指定
     PVector start = new PVector(random(width), random(height));
     particles.add(new Particle(start, random(2, 8)));
   }
@@ -53,6 +53,11 @@ void keyPressed(){
 
 
 public class FlowField {
+  /*
+  画面に配置されるベクターの集合体
+  Particlesの動きに力を加える
+  */
+  
   PVector[] vectors;
   int cols, rows;
   float inc = 0.1;
@@ -65,15 +70,19 @@ public class FlowField {
     rows = floor(height / res) + 1;
     vectors = new PVector[cols * rows];
   }
+
   void update() {
+    // flowfield状態を定義
+    // フレームごとに呼び出される
+
     float xoff = 0;
     for (int y = 0; y < rows; y++) { 
       float yoff = 0;
       for (int x = 0; x < cols; x++) {
-        float angle = noise(xoff, yoff, zoff) * radians(180);
+        float angle = noise(xoff, yoff, zoff) * radians(180); // ここで各ベクターの角度を定義
         
-        PVector v = PVector.fromAngle(angle);
-        v.setMag(1);
+        PVector v = PVector.fromAngle(angle); // Flowfieldを構成するベクター
+        v.setMag(1); // 各ベクターの大きさを定義
         int index = x + y * cols;
         vectors[index] = v;
        
@@ -87,6 +96,11 @@ public class FlowField {
 
 
 public class Particle {
+  /*
+  ひとつの粒子
+  動きはflowfieldのベクターから影響を受ける
+  */
+
   PVector pos;
   PVector vel;
   PVector acc;
@@ -100,27 +114,36 @@ public class Particle {
     acc = new PVector(0, 0);
     previousPos = pos.copy();
   }
+
   void run() {
     update();
     edges();
     show();
   }
+
   void update() {
     pos.add(vel);
     vel.limit(maxSpeed);
     vel.add(acc);
     acc.mult(0);
   }
+
   void applyForce(PVector force) {
     acc.add(force); 
   }
+
   void show() {
+    // 描画処理
+
     stroke(10, 2); // ここで線の色調整
     strokeWeight(1); // ここで線の太さ調整
     line(pos.x, pos.y, previousPos.x, previousPos.y);
     updatePreviousPos();
   }
+
   void edges() {
+    // 画面端の処理
+
     if (pos.x > width) {
       pos.x = 0;
       updatePreviousPos();
@@ -138,11 +161,15 @@ public class Particle {
       updatePreviousPos();
     }
   }
+
   void updatePreviousPos() {
     this.previousPos.x = pos.x;
     this.previousPos.y = pos.y;
   }
+
   void follow(FlowField flowfield) {
+    // Flowfieldから受ける力を適用
+
     int x = floor(pos.x / flowfield.scl);
     int y = floor(pos.y / flowfield.scl);
     int index = x + y * flowfield.cols;
