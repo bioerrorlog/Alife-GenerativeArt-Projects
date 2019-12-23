@@ -1,3 +1,3 @@
 - Making blog: https://www.bioerrorlog.work/entry/generative-art-processing-11  
 - Output images: https://www.pixiv.net/artworks/78438449  
- -Output movie: https://youtu.be/RL9DdiHfq6s  
+- Output movie: https://youtu.be/RL9DdiHfq6s  
