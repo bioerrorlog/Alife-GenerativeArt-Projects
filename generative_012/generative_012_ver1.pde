@@ -26,6 +26,18 @@ void draw() {
     background(0); 
     _trunk.updateMe(width/2, height/2); 
     _trunk.drawMe();
+
+    saveFrame("frames/generative_12_#####.png"); // 各フレームで画像を保存
+}
+
+void keyPressed(){
+    /*
+    BACKSPACEキー押下: リセット
+    */
+    
+    if (keyCode == BACKSPACE){
+        setup();
+    }
 }
 
 class Branch { 
