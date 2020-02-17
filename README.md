@@ -1,7 +1,7 @@
-My ALife and Generative Art projects in processing 
+# ALife / Generative Art projects 
 
-Making blog:  
+- Making blog:  
 https://www.bioerrorlog.work/entry/generative-art-processing-gallery
 
-Output images:  
+- Output images:  
 https://www.pixiv.net/users/45939014
