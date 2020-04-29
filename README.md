@@ -1,7 +1,10 @@
 # ALife / Generative Art projects 
 
-- Making blog:  
+- Making Blog:  
 https://www.bioerrorlog.work/entry/generative-art-processing-gallery
 
-- Output images:  
+- Output Movies:  
+https://www.youtube.com/channel/UCyS1DRhfDh0Z14GC3icUtlA  
+
+- Output Images:  
 https://www.pixiv.net/users/45939014
