@@ -4,8 +4,8 @@
 ffmpeg -r 30 -i generative_1_%05d.png -vcodec libx264 -b:v 15M -g 30 -bf 2 -profile:v high  -coder 1 -pix_fmt yuv420p -movflags +faststart -r 60 out.mp4
 
 参考: 
+https://www.bioerrorlog.work/entry/youtube-encoding-ffmpeg
 https://support.google.com/youtube/answer/1722171?hl=ja
-https://nyanshiba.hatenablog.com/entry/2018/02/03/071256#YouTube%E3%81%AB%E3%81%86p%E3%81%99%E3%82%8B
 
 
 -- 動画を連結
