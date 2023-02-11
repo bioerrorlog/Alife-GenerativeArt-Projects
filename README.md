@@ -1,10 +1,7 @@
-# ALife / Generative Art projects 
+# ALife / Generative Art projects
 
-- Making Blog:  
-https://www.bioerrorlog.work/entry/generative-art-processing-gallery
+ALife (Artificial-Life) and Generative Art projects by Processing.
 
-- Output Movies:  
-https://www.youtube.com/channel/UCyS1DRhfDh0Z14GC3icUtlA  
-
-- Output Images:  
-https://www.pixiv.net/users/45939014
+- [My blog posts (Japanese)](https://www.bioerrorlog.work/entry/generative-art-processing-gallery)
+- [Output YouTube videos](https://www.youtube.com/channel/UCyS1DRhfDh0Z14GC3icUtlA)
+- [Output images](https://www.pixiv.net/users/45939014)
